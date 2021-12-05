@@ -1,12 +1,12 @@
 # .............................
 
-# File: .py
-# Author - Muhammed Shafeeq Thottathil
-# Version:
-# Created Date:  
-# Modified Date: 
-# Description :
-# Listening : 
+# File         :L00163279_Q3_File_2.py
+# Author       :Muhammed Shafeeq Thottathil
+# Version      :v1.0
+# Created Date :05/12/2021
+# Modified Date:05/12/2021
+# Description  :Python script to connect to an Linux server and create folders via Python.
+# Licensing    :Muhammed Shafeeq Thottathil
 
 # ...............................
 
