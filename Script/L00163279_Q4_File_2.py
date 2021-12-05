@@ -12,60 +12,50 @@
 
 import socket
 import sys
-from datetime import datetime
 
+"The Port to scan and check in VM environment"
 PORT_TO_SCAN = [22, 80]
 
-def port_scan():
-    # Ask for input
+"Function to check remote ports"
+def port_check():
+    " read remote host address "
     remote_server = input("Enter a remote host to scan: ")
     remote_server_ip = socket.gethostbyname(remote_server)
 
-    # Print a nice banner with information on which host we are about to scan
-    print_banner("Please wait, scanning remote host {}".format(remote_server_ip))
+    "Scanning Remote host"
+    print("scanning remote host {}.........".format(remote_server_ip))
+    print("--------------------------------------------\n")
 
-    # Check what time the scan started
-    t1 = datetime.now()
+    "Checking ports in remote server"
     try:
         for port in PORT_TO_SCAN:
-
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             result = sock.connect_ex((remote_server_ip, port))
+
             if result == 0:
                 if(port == 22):
                     print("SSH")
                 elif(port ==80):
                     print("HTTP")
 
-                print("Port {}:    Open".format(port))
+                print("Port {}:    Open\n".format(port))
             sock.close()
+
+    #Exception for the KeyboardInterrupt
     except KeyboardInterrupt:
         print("You pressed Ctrl+C")
         sys.exit()
 
+    #Exception for the host
     except socket.gaierror:
         print('Hostname could not be resolved. Exiting')
         sys.exit()
 
+    #Exception for socket error
     except socket.error:
         print("Couldn't connect to server")
         sys.exit()
 
-        # Checking the time again
-    t2 = datetime.now()
-
-    # Calculates the difference of time, to see how long it took to run the script
-    total = t2 - t1
-
-    # Printing the information to screen
-    print('Scanning Completed in: ', total)
-
-
-def print_banner(text):
-    print("-" * 60)
-    print()
-    print("-" * 60)
-
-
+"Function Call"
 if __name__ == "__main__":
-    port_scan()
+    port_check()

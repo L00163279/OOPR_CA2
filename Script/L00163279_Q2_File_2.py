@@ -47,16 +47,16 @@ def get_headlines(web_response):
 
 "Function is to find the count of the word apache2 in the page"
 def get_count_word_apache(web_response):
-    print("........The count of word apache2.........")
-    count = web_response.find_all( string=lambda text: "apache2" in text.lower())
+    print("........The count of word Apache2.........")
+    count = web_response.find_all( string=lambda text:"apache2" in text.lower())
     print("Apache2 appears {} times".format(len(count)))
     print("\n")
 
 "Function is to find the word ubuntu "
 def get_count_word_ubuntu(web_response):
-    print(".........checking another word : 'ubuntu'............ ")
-    count1 = web_response.find_all(string=lambda text: "ubuntu" in text.lower())
-    print("ubuntu appears {} times".format(len(count1)))
+    print(".........checking another word : 'Ubuntu'............ ")
+    count1 = web_response.find_all(string=lambda text: "Ubuntu" in text)
+    print("Ubuntu appears {} times".format(len(count1)))
 
 
 if __name__ == '__main__':
